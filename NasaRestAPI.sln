@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NasaRestAPI.Android", "NasaRestAPI.Android\NasaRestAPI.Android.csproj", "{BF99EC01-7523-48BD-BC29-198E661BAC2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NasaRestAPI", "NasaRestAPI\NasaRestAPI.csproj", "{F355DD0D-23E5-4935-BB96-92BF0BE80359}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF99EC01-7523-48BD-BC29-198E661BAC2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF99EC01-7523-48BD-BC29-198E661BAC2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF99EC01-7523-48BD-BC29-198E661BAC2A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BF99EC01-7523-48BD-BC29-198E661BAC2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF99EC01-7523-48BD-BC29-198E661BAC2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF99EC01-7523-48BD-BC29-198E661BAC2A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F355DD0D-23E5-4935-BB96-92BF0BE80359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F355DD0D-23E5-4935-BB96-92BF0BE80359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F355DD0D-23E5-4935-BB96-92BF0BE80359}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F355DD0D-23E5-4935-BB96-92BF0BE80359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F355DD0D-23E5-4935-BB96-92BF0BE80359}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F355DD0D-23E5-4935-BB96-92BF0BE80359}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08687A96-E84A-42DC-B6AB-E13A8E56D30A}
+	EndGlobalSection
+EndGlobal
