@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
-	<style name="MainTheme" parent="MainTheme.Base">
+	<style name="MainTheme">
 		<item name="android:statusBarColor">#2d2d2d</item>
 		<item name="android:navigationBarColor">#2d2d2d</item>
-		<item name="colorControlActivated">#a973ff</item>
+
+
+
+		<item name="android:colorControlNormal">#a973ff</item>
+		<item name="android:colorControlActivated">#a973ff</item>
+		<item name="android:colorControlHighlight">#a973ff</item>
 		<item name="colorAccent">#FFFFFF</item>
 		
 		<item name="android:colorPressedHighlight">@color/ListViewSelected</item>

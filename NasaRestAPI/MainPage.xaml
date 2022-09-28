@@ -24,16 +24,6 @@
                 HeightRequest="40"
                 Padding="30, 20, 30, 20"/>
 
-            <renderers:Entry
-                BackgroundColor="{StaticResource BackgroundColorSecondary}"
-                TextColor="White"
-                BorderColor="{StaticResource BackgroundColorSecondary}" 
-                 FontSize="18"
-                CornerRadius="10" 
-                BorderWidth="5" 
-                HeightRequest="40"
-                Padding="30, 20, 30, 20"/>
-
             <renderers:SearchBar 
                 BackgroundColor="{StaticResource BackgroundColorSecondary}"
                 TextColor="White"
@@ -46,17 +36,6 @@
                 HeightRequest="40"
                 Padding="-24, -16, -18, -16"/>
 
-            <renderers:SearchBar 
-                BackgroundColor="{StaticResource BackgroundColorSecondary}"
-                TextColor="White"
-                BorderColor="{StaticResource BackgroundColorSecondary}" 
-                SearchIconColor="White"
-                CancelButtonColor="White"
-                FontSize="18"
-                CornerRadius="10" 
-                BorderWidth="5" 
-                HeightRequest="40"
-                Padding="-24, -16, -18, -16"/>
 
             <RefreshView 
                 RefreshColor="Red" 
