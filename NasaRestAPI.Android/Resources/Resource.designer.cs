@@ -14439,7 +14439,7 @@ namespace NasaRestAPI.Droid
 			public const int colorAccent = 2131034163;
 			
 			// aapt resource value: 0x7F050034
-			public const int colorPrimary = 2131034164;
+			public const int colorCursors = 2131034164;
 			
 			// aapt resource value: 0x7F050035
 			public const int colorPrimaryDark = 2131034165;

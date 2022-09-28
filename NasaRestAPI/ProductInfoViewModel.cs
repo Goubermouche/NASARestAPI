@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace NasaRestAPI
 {
@@ -50,7 +51,7 @@ namespace NasaRestAPI
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        void ExecuteRefreshCommand()
+        async void ExecuteRefreshCommand()
         {
             if (IsRefreshing)
             {
@@ -58,6 +59,8 @@ namespace NasaRestAPI
             }
 
             IsRefreshing = true;
+
+            await Task.Delay(1000);
             ItemList.Add(new ProductInfo { Name = "New", ID = 100 });
             IsRefreshing = false;
         }
