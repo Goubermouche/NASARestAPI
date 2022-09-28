@@ -61,5 +61,5 @@ namespace NasaRestAPI
             ItemList.Add(new ProductInfo { Name = "New", ID = 100 });
             IsRefreshing = false;
         }
-    } 
+    }
 }

@@ -9,26 +9,33 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <StackLayout 
-            BackgroundColor="DarkCyan">
-                <renderers:CustomEntry
-                TextColor="Lime"
-                BorderColor="Lime" 
+        <StackLayout  BackgroundColor="Blue">
+
+            <renderers:CustomEntry
+                BackgroundColor="DarkRed"
+                TextColor="White"
+                BorderColor="White" 
                 CornerRadius="20" 
                 BorderWidth="5" 
-                Text="Hello, world!"
-                Margin="5, 5, 5, 0"
+                Placeholder="Search"
+                PlaceholderColor="White"
+                Margin="5, 0, 5, 5"
                 Padding="30, 20, 30, 20"
                 FontFamily="Helvetica"/>
-            <RefreshView RefreshColor="Red" BackgroundColor="Black" IsRefreshing="{Binding IsRefreshing, Mode=OneWay}" Command="{Binding RefreshCommand}">
+
+            <SearchBar TextColor="Red" CancelButtonColor="Lime" sea/>
+
+            <RefreshView RefreshColor="Red" BackgroundColor="Lime" IsRefreshing="{Binding IsRefreshing, Mode=OneWay}" Command="{Binding RefreshCommand}">
                 <ListView ItemsSource="{Binding ItemList}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Name}" Detail="{Binding ID}"></TextCell>
+                            <TextCell 
+                                Text="{Binding Name}" Detail="{Binding ID}"></TextCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </RefreshView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
