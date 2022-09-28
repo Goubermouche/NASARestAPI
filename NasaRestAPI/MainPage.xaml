@@ -3,15 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:NasaRestAPI" xmlns:renderers="clr-namespace:NasaRestAPI.Renderers"
              x:Class="NasaRestAPI.MainPage">
-    
+
     <ContentPage.BindingContext>
         <local:ProductInfoViewModel/>
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <StackLayout 
             BackgroundColor="DarkCyan">
-            <renderers:CustomEntry
+                <renderers:CustomEntry
                 TextColor="Lime"
                 BorderColor="Lime" 
                 CornerRadius="20" 
@@ -19,16 +19,16 @@
                 Text="Hello, world!"
                 Margin="5, 5, 5, 0"
                 Padding="30, 20, 30, 20"
-                FontFamily="Helvetica"
-                />
-
-            <ListView ItemsSource="{Binding ItemList}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding ID}"></TextCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                FontFamily="Helvetica"/>
+            <RefreshView RefreshColor="Red" BackgroundColor="Black" IsRefreshing="{Binding IsRefreshing, Mode=OneWay}" Command="{Binding RefreshCommand}">
+                <ListView ItemsSource="{Binding ItemList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}" Detail="{Binding ID}"></TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </RefreshView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

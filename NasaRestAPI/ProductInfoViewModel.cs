@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Windows.Input;
+using Xamarin.Forms;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace NasaRestAPI
 {
@@ -11,18 +16,50 @@ namespace NasaRestAPI
         public int ID { get; set; }
     }
 
-    public class ProductInfoViewModel
+    public class ProductInfoViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<ProductInfo> ItemList { get; set; }
+        public ICommand RefreshCommand { get; }
+
+        bool isRefreshing;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public bool IsRefreshing
+        {
+            get => isRefreshing;
+            set
+            {
+                isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
+            }
+        }
 
         public ProductInfoViewModel()
         {
             ItemList = new ObservableCollection<ProductInfo>();
-
-            for (int i = 0; i < 100; i++)
+            RefreshCommand = new Command(ExecuteRefreshCommand);
+            for (int i = 0; i < 2; i++)
             {
                 ItemList.Add(new ProductInfo { Name = i.ToString() + "__", ID = i });
             }
         }
-    }
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        void ExecuteRefreshCommand()
+        {
+            if (IsRefreshing)
+            {
+                return;
+            }
+
+            IsRefreshing = true;
+            ItemList.Add(new ProductInfo { Name = "New", ID = 100 });
+            IsRefreshing = false;
+        }
+    } 
 }
