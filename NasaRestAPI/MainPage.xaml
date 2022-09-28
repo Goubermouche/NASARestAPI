@@ -9,21 +9,21 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="Blue">
+        <StackLayout 
+            BackgroundColor="Blue"
+            Padding="5, 0, 5, 0">
 
-            <renderers:CustomEntry
-                BackgroundColor="DarkRed"
+            <renderers:SearchBar 
+                BackgroundColor="Black"
                 TextColor="White"
                 BorderColor="White" 
+                SearchIconColor="White"
+                CancelButtonColor="White"
+                FontSize="18"
                 CornerRadius="20" 
                 BorderWidth="5" 
-                Placeholder="Search"
-                PlaceholderColor="White"
-                Margin="5, 0, 5, 5"
-                Padding="30, 20, 30, 20"
-                FontFamily="Helvetica"/>
-
-            <SearchBar TextColor="Red" CancelButtonColor="Lime" sea/>
+                HeightRequest="40"
+                Padding="-30, -16, -24, -16"/>
 
             <RefreshView RefreshColor="Red" BackgroundColor="Lime" IsRefreshing="{Binding IsRefreshing, Mode=OneWay}" Command="{Binding RefreshCommand}">
                 <ListView ItemsSource="{Binding ItemList}">

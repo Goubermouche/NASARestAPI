@@ -16,26 +16,24 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using System.Diagnostics;
 
-[assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRendererAndroid))]
+[assembly: ExportRenderer(typeof(NasaRestAPI.Renderers.Entry), typeof(EntryRendererAndroid))]
 namespace NasaRestAPI.Droid.Renderers
 {
-    public class CustomEntryRendererAndroid : EntryRenderer
+    public class EntryRendererAndroid : EntryRenderer
     {
-        CustomEntry customEntry;
-        bool keyboardActive;
+        NasaRestAPI.Renderers.Entry customEntry;
 
-        public CustomEntryRendererAndroid(Context context) : base(context)
+        public EntryRendererAndroid(Context context) : base(context)
         {
-
         }
 
-        protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Entry> e)
         {
             base.OnElementChanged(e);
 
             if (e.OldElement == null)
             {
-                customEntry = (CustomEntry)e.NewElement;
+                customEntry = (NasaRestAPI.Renderers.Entry)e.NewElement;
                 var gradientDrawable = new GradientDrawable();
 
                 gradientDrawable.SetColor(customEntry.BackgroundColor.ToAndroid());

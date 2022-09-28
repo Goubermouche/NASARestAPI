@@ -5,10 +5,10 @@ using Xamarin.Forms;
 
 namespace NasaRestAPI.Renderers
 {
-    public class CustomEntry : Entry
+    public class Entry : Xamarin.Forms.Entry
     {
         public static readonly BindableProperty CornerRadiusProperty =
-            BindableProperty.Create("CornerRadius", typeof(int), typeof(CustomEntry), 0);
+            BindableProperty.Create("CornerRadius", typeof(int), typeof(Entry), 0);
 
         public int CornerRadius
         {
@@ -17,7 +17,7 @@ namespace NasaRestAPI.Renderers
         }
 
         public static readonly BindableProperty BorderColorProperty =
-            BindableProperty.Create("BorderColor", typeof(Color), typeof(CustomEntry), Color.Red);
+            BindableProperty.Create("BorderColor", typeof(Color), typeof(Entry), Color.Red);
 
         public Color BorderColor
         {
@@ -26,7 +26,7 @@ namespace NasaRestAPI.Renderers
         }
 
         public static readonly BindableProperty BorderWidthProperty =
-           BindableProperty.Create("BorderWidth", typeof(int), typeof(CustomEntry), 2);
+           BindableProperty.Create("BorderWidth", typeof(int), typeof(Entry), 2);
 
         public int BorderWidth
         {
@@ -35,7 +35,7 @@ namespace NasaRestAPI.Renderers
         }
 
         public static readonly BindableProperty PaddingProperty =
-            BindableProperty.Create("Padding", typeof(Thickness), typeof(CustomEntry), new Thickness(0, 0, 0, 0));
+            BindableProperty.Create("Padding", typeof(Thickness), typeof(Entry), new Thickness(0, 0, 0, 0));
 
         public Thickness Padding
         {
@@ -44,7 +44,7 @@ namespace NasaRestAPI.Renderers
         }
 
         public static readonly BindableProperty BackgroundColorProperty =
-          BindableProperty.Create("BackgroundColor", typeof(Color), typeof(CustomEntry), Color.Red);
+          BindableProperty.Create("BackgroundColor", typeof(Color), typeof(Entry), Color.Red);
 
         public Color BackgroundColor
         {

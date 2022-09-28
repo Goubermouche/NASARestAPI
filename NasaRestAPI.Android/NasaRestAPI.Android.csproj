@@ -59,7 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Renderers\CustomEntryRendererAndroid.cs" />
+    <Compile Include="Renderers\EntryRendererAndroid.cs" />
+    <Compile Include="Renderers\SearchBarRendererAndroid.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
