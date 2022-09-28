@@ -1,10 +1,13 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Newtonsoft.Json;
 
 namespace NasaRestAPI
 {
-  
+    // properties
+    // lastKnownState.......the latest request from the API
+    // lastKnownStateDate...date when the latest request was received
 
     public partial class App : Application
     {
@@ -12,17 +15,21 @@ namespace NasaRestAPI
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
         }
 
         protected override void OnStart()
         {
-       
+            if (Application.Current.Properties.ContainsKey("lastKnownState"))
+            {
+
+            }
+
+            MainPage = new MainPage("blah");
         }
 
         protected override void OnSleep()
         {
+
         }
 
         protected override void OnResume()

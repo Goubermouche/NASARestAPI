@@ -13,7 +13,7 @@ namespace NasaRestAPI
 
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        public MainPage(string json)
         {
             InitializeComponent();
         }
