@@ -13,29 +13,55 @@
             BackgroundColor="{StaticResource BackgroundColor}"
             Padding="5, 0, 5, 0">
 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
 
-            <renderers:Entry
-                BackgroundColor="{StaticResource BackgroundColorSecondary}"
-                TextColor="White"
-                BorderColor="{StaticResource BackgroundColorSecondary}" 
-                 FontSize="18"
-                CornerRadius="10" 
-                BorderWidth="5" 
-                HeightRequest="40"
-                Padding="30, 20, 30, 20"/>
+               
+                
+                <renderers:Entry
+                    BackgroundColor="{StaticResource BackgroundColorSecondary}"
+                    TextColor="White"
+                    BorderColor="{StaticResource BackgroundColorSecondary}" 
+                    x:Name="SearchEntry"
+                    Completed="Entry_Completed"
+                    TextChanged="Entry_TextChanged"
+                    FontSize="18"
+                    CornerRadius="20" 
+                    BorderWidth="5" 
+                    HeightRequest="40"
+                    Padding="120, 20, 110, 20"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="0"
+                    ReturnType="Search"/>
 
-            <renderers:SearchBar 
-                BackgroundColor="{StaticResource BackgroundColorSecondary}"
-                TextColor="White"
-                BorderColor="{StaticResource BackgroundColorSecondary}" 
-                SearchIconColor="White"
-                CancelButtonColor="White"
-                FontSize="18"
-                CornerRadius="10" 
-                BorderWidth="5" 
-                HeightRequest="40"
-                Padding="-24, -16, -18, -16"/>
+                <Image Source="search.png"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Margin="10"/>
 
+                <ImageButton
+                     Source="close.png"
+                    IsVisible="false"
+                    x:Name="SearchCloseButton"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Margin="10"
+                    BackgroundColor="Transparent"
+                    Clicked="SearchCloseButton_Clicked"
+                    />
+                
+
+            </Grid>
+
+        
 
             <RefreshView 
                 RefreshColor="Red" 

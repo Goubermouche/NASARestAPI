@@ -15,6 +15,7 @@ using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using System.Diagnostics;
+using Android.Text;
 
 [assembly: ExportRenderer(typeof(NasaRestAPI.Renderers.Entry), typeof(EntryRendererAndroid))]
 namespace NasaRestAPI.Droid.Renderers
@@ -40,6 +41,7 @@ namespace NasaRestAPI.Droid.Renderers
                 gradientDrawable.SetCornerRadius(customEntry.CornerRadius);
                 gradientDrawable.SetStroke(customEntry.BorderWidth, customEntry.BorderColor.ToAndroid());
 
+                Control.SetRawInputType(InputTypes.TextFlagNoSuggestions | InputTypes.TextVariationVisiblePassword);
                 Control.SetBackground(gradientDrawable);
                 Control.SetPadding((int)customEntry.Padding.Left, (int)customEntry.Padding.Top, (int)customEntry.Padding.Right, (int)customEntry.Padding.Bottom);
             }
