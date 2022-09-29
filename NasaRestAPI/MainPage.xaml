@@ -10,7 +10,7 @@
 
     <ContentPage.Content>
         <StackLayout 
-            BackgroundColor="{StaticResource BackgroundColor}"
+            BackgroundColor="{StaticResource BackgroundColorPrimary}"
             Padding="5, 0, 5, 0">
 
             <Grid>
@@ -23,11 +23,9 @@
                     <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
 
-               
-                
                 <renderers:Entry
                     BackgroundColor="{StaticResource BackgroundColorSecondary}"
-                    TextColor="White"
+                    TextColor="{StaticResource TextColorPrimary}"
                     BorderColor="{StaticResource BackgroundColorSecondary}" 
                     x:Name="SearchEntry"
                     Completed="Entry_Completed"
@@ -55,17 +53,14 @@
                     Grid.Row="0"
                     Margin="10"
                     BackgroundColor="Transparent"
-                    Clicked="SearchCloseButton_Clicked"
-                    />
-                
-
+                    Clicked="SearchCloseButton_Clicked"/>
             </Grid>
 
         
 
             <RefreshView 
-                RefreshColor="Red" 
-                BackgroundColor="Lime" 
+                RefreshColor="#a973ff" 
+                BackgroundColor="White" 
                 IsRefreshing="{Binding IsRefreshing, Mode=OneWay}"
                 Command="{Binding RefreshCommand}">
                 

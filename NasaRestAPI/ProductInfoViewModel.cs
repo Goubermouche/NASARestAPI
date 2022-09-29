@@ -60,7 +60,7 @@ namespace NasaRestAPI
 
             IsRefreshing = true;
 
-            await Task.Delay(1000);
+            await Task.Delay(200);
             ItemList.Add(new ProductInfo { Name = "New", ID = 100 });
             IsRefreshing = false;
         }
