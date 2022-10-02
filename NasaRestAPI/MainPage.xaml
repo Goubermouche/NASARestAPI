@@ -56,7 +56,9 @@
                     Clicked="SearchCloseButton_Clicked"/>
             </Grid>
 
-        
+
+            <Image
+                Source="https://images-assets.nasa.gov/image/PIA13385/PIA13385~thumb.jpg"/>
 
             <RefreshView 
                 RefreshColor="#a973ff" 

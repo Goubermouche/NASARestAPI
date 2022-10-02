@@ -8,6 +8,9 @@ using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Diagnostics;
+using System.Net.Http;
+using System.Net;
+using System.IO;
 
 namespace NasaRestAPI
 {
@@ -18,9 +21,27 @@ namespace NasaRestAPI
             InitializeComponent();
         }
 
-        private void Entry_Completed(object sender, EventArgs e)
+        private async void Entry_Completed(object sender, EventArgs e)
         {
-            Debug.WriteLine("submit");
+            Debug.WriteLine("||||||||||||||||||||||||||||||||");
+
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    string uri = $"https://images-api.nasa.gov/search?q={SearchEntry.Text.Replace(" ", "%20")}&media_type=image";
+                    Debug.WriteLine(uri);
+
+                    var httpClient = new HttpClient();
+                    Console.WriteLine(await httpClient.GetStringAsync(uri));
+                }
+                catch(Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                }
+            });
+
+            Debug.WriteLine("||||||||||||||||||||||||||||||||");
         }
 
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
