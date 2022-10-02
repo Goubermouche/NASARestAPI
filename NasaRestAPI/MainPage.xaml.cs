@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Net;
 using System.IO;
+using Xamarin.Essentials;
 
 namespace NasaRestAPI
 {
@@ -23,17 +24,49 @@ namespace NasaRestAPI
 
         private async void Entry_Completed(object sender, EventArgs e)
         {
-            Debug.WriteLine("||||||||||||||||||||||||||||||||");
+            SearchProgressBar.IsVisible = true;
+            SearchProgressBar.Progress = 0;
 
             await Task.Run(async () =>
             {
                 try
                 {
+                    if(String.IsNullOrWhiteSpace(SearchEntry.Text))
+                    {
+                        return;
+                    }
+
                     string uri = $"https://images-api.nasa.gov/search?q={SearchEntry.Text.Replace(" ", "%20")}&media_type=image";
                     Debug.WriteLine(uri);
 
-                    var httpClient = new HttpClient();
-                    Console.WriteLine(await httpClient.GetStringAsync(uri));
+                    var webRequest = WebRequest.Create(uri);
+                    var response = await webRequest.GetResponseAsync();
+
+                    int max = (int)response.ContentLength;
+                    var list = new List<byte>();
+                    var bytes = new byte[1024];
+                    var stream = response.GetResponseStream();
+                    int bytesRead = 0;
+                    int curr = 0;
+
+                    do
+                    {
+                        bytesRead = await stream.ReadAsync(bytes, 0, 1024);
+                        list.AddRange(bytes.Take(bytesRead));
+                        curr += bytesRead;
+
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+                            await SearchProgressBar.ProgressTo((float)curr / (float)max, 1, Easing.Linear);
+                        });
+
+                    } while (bytesRead > 0);
+
+                    ASCIIEncoding encoding = new ASCIIEncoding();
+                    string result = encoding.GetString(list.ToArray());
+                    Console.WriteLine(result);
+
+                    await Task.Delay(200);
                 }
                 catch(Exception ex)
                 {
@@ -41,7 +74,7 @@ namespace NasaRestAPI
                 }
             });
 
-            Debug.WriteLine("||||||||||||||||||||||||||||||||");
+            SearchProgressBar.IsVisible = false;
         }
 
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
