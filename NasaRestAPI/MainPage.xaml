@@ -58,17 +58,14 @@
                     BackgroundColor="Transparent"
                     Clicked="SearchCloseButton_Clicked"/>
 
-
-                    <ProgressBar
-                        
-                Grid.Column="0"
+                <ProgressBar
+                    Grid.Column="0"
                     Grid.ColumnSpan="3"
                     Grid.Row="1"
                     HeightRequest="4"
                     x:Name="SearchProgressBar"
                     ProgressColor="#a973ff"
                     IsVisible="true"/>
-                
             </Grid>
 
             <RefreshView 
