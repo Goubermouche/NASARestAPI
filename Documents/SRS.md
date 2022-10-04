@@ -126,3 +126,10 @@ Display.
 The system will take a string as the argument and store it as a property. Once the application launches again the system loads the available data, parses it, and displays it inside the image list view. 
   #### 4.3.3 Function Specification
 Storage medium
+## 5. Non-Functional Requirements
+### 5.1 Performance
+The application should work on most modern mobile devices without unnecessary lagging or stuttering. 
+### 5.2 Safety
+Since the application does not operate with any personal or potentially 'unsafe' or risk-prone data safety is not a concern. 
+### 5.1 Reliability
+The application should work perfectly, provided the user has stable access to the internet. In the case that a stable internet connection is not available the search functionality wil not be available, however, if a available, the last search result will still be visibile. 
