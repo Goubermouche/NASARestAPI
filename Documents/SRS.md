@@ -42,7 +42,11 @@ Table of Contents
    * 4.3 [Data Serialization](#43-data-serialization) 
      * 4.3.1 [Description and Importance](#431-description-and-importance) 
      * 4.3.2 [Inputs and Outputs](#432-inputs-and-outputs) 
-     * 4.3.3 [Function Specification](#433-function-specification) 
+     * 4.3.3 [Function Specification](#433-function-specification)
+  * 5 [Non-Functional Requirements](#5-non-functional-requirements)
+     * 5.1 [Performance](#51-performance)
+     * 5.2 [Safety](#52-safety)
+     * 5.3 [Reliability](#53-reliability)
 
 ## 1. Introduction  
   ### 1.1 Document Purpose
