@@ -104,7 +104,7 @@ The application's interface will be very minimalistic - providing only a simple 
   ### 3.2 Hardware Interface
   N/A
   ### 3.3 Software Interface
-  N/A
+The application will interact with the images.nasa image library API. 
 
 ## 4. System properties
   ### 4.1 Searching
