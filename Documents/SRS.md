@@ -2,7 +2,7 @@
 ## Nasa Image Viewer
 
 Version 0.1 - Initial proposal   
-Prepared by Simon Tupý 3.C  
+Prepared by Simon Tupý 4.C  
 SSPŠaG  
 May 30, 2022
 
