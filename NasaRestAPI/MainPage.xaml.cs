@@ -12,6 +12,8 @@ using System.Net.Http;
 using System.Net;
 using System.IO;
 using Xamarin.Essentials;
+using NasaRestAPI.Data;
+using Newtonsoft.Json;
 
 namespace NasaRestAPI
 {
@@ -59,13 +61,13 @@ namespace NasaRestAPI
                         {
                             await SearchProgressBar.ProgressTo((float)curr / (float)max, 1, Easing.Linear);
                         });
-
                     } while (bytesRead > 0);
 
                     ASCIIEncoding encoding = new ASCIIEncoding();
                     string result = encoding.GetString(list.ToArray());
-                    Console.WriteLine(result);
+                    Console.WriteLine(result.Substring(result.Length - 1000));
 
+                    LoadJSONResult(result);
                     await Task.Delay(200);
                 }
                 catch(Exception ex)
@@ -87,6 +89,18 @@ namespace NasaRestAPI
         {
             SearchEntry.Text = "";
             SearchEntry.Unfocus();
+        }
+
+        public void LoadJSONResult(string json)
+        {
+            try
+            {
+                PostData data = JsonConvert.DeserializeObject<PostData>(json);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }
