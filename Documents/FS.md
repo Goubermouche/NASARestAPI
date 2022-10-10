@@ -1,10 +1,10 @@
 # Functional Specification
-## Color Picker
+## Nasa Image Viewer
 
 Version 0.1  
-Prepared by Simon Tupý 3.C  
+Prepared by Simon Tupý 4.C  
 SSPŠaG  
-June 6, 2022
+October 10, 2022
 
 Table of Contents
 ================
@@ -32,30 +32,37 @@ Table of Contents
 | Term | Definition    |
 | ---- | ------- |
 | Software Requirements Specification  |  A document that completely describes all of the functions of a proposed system and the constraints under which it must operate. For example, this document.       |
+| API | Application program interface |
   ### 1.3 Target Audience
 This document is intended mainly for testers, developers, the marketing department, and other parties that may be involved. 
   ### 1.4 References
-
+* Software Requirement Specification *Šimon Tupý* https://github.com/Goubermouche/Color-Picker/blob/main/SRS.md    
+* images.nasa.gov API Documentation *Nasa* https://images.nasa.gov/docs/images.nasa.gov_api_docs.pdf
+* Nasa *USA* https://www.nasa.gov/
+* Nasa Open Apis *Nasa* https://api.nasa.gov/
+* Xamarin forms *Microsoft* https://dotnet.microsoft.com/en-us/apps/xamarin/xamarin-forms
+* Android https://www.android.com/
+* Newtonsoft JSON https://www.newtonsoft.com/json
 ## 2. Scenarios
   ### 2.1 Usecases
-The main use case of the product is fast color picking of colors in various formats from the user's display. This feature may be, for example, used in software development for faster prototyping. 
+The main use case of the product is viewing images retrieved from the nasa.images API.
   ### 2.2 Personas
-The products target audience mainly consists of programmers and other software developers (ie. graphics programmers, web developers, etc.), however the product offers utility to other groups aswell.
+The products target audience mainly consists of enthusiasts interested in images related to NASA and its various space ventures. 
   ### 2.3 Details, Motivation and Live Examples
- This project was inspired by Microsoft's PowerToys which already provides a native color picker for windows, this color picker, however, offers limited control over color formats while being active (the user can only switch them after opening the complimentary PowerToys application), which can get tiresome after having to switch between color formats often. This application aims to fix this issue by using additional global shortcuts that give the user the ability to switch color formats on the fly. 
+N/A
   ### 2.4 Product Scope
-Due to the limited timeframe the scale of this project is limited to just the bare essentials - that is, a basic color picker that enables users to pick any color from their display at will and automatically convert it to the desired format. 
-
+The application will be able to perform basic search operations on the images.nasa API, and then display the resulting images. Furthermore the application will also save the last search result.  
 
   ### 2.5 Unimportant Functions and Properties
-The aforementioned scale of the project allows us to focus on every aspect of the application at a decently high level, as such, no functions or properties will be left ignored or unexplored. 
+The application will contain a basic search bar containing a simple 'X' button that will clear the underlying entry once clicked, the 'X' button will only be visible if the underlying entry contains atleast one character. 
 
 ## 3. Architecture Overview
   ### 3.1 Work Flow
-  When the user first launches the application it is completely invisible (no presence apart from a background process will be visible). If the user activates the predefined shortcut (default being <kbd>Shift</kbd> + <kbd>C</kbd>) the application launches and the user will see a swatch next to his cursor - this swatch displays a preview of the hovered color and the selected color format. If the application is currently in its active state and the users clicks the <kbd>LMB</kbd> the currently hovered color gets copied to the clipboard and the application returns to its dormant state. Additionally the user can switch between color formats using the <kbd>UP</kbd> and <kbd>DOWN</kbd> keys.
+ Once the application launches the user will be presented with a simple UI containing a search bar and a list view containing the latest search results, if any are available. The user can then use the searchbar to access images from the images.nasa image gallery, after inputting a search query the user can then press the 'search' button on their keyboard to confirm the search and send a request. Once a search request is sent and received the data will begin downloading, the download progress will be displayed inside a simple progress bar located underneath the search bar. After the data is successfully retrieved it will be displayed inside the list view. 
+ 
   ### 3.2 Main Modules
-  Due to the overall simplicity of the solution the application only consists of one module: the color picker itself. 
+The application contains three main modules: an image viewer module, that visualizes and manages the image context, the search module, and the serialization module. 
   ### 3.3 Details
-  The application will dynamically respond to display scale and DPI settings. Additionally the application will support both multiple, and single monitor configurations natively.
+The application will only run on android (Oreo+).
   ### 3.4 Possible Program Flows
-  The application has two main states: active and dormant. In its dormant state the application consumes minimal resources (target being < 0% on normal systems) and only listens to a predefined keyboard shortcut (default being <kbd>Shift</kbd> + <kbd>C</kbd>). If, and when the shortcut gets triggered the application awakens and the color picker functionality is enabled, allowing the user to sample display colors.
+The application has two main program flows: the first one describes a situation where the user opens the application and then views their latest search query that was retreived from local storage, if one is available. The second program flow describes a situation where the user opens the application and then proceeds to send a search query using the search bar. 
