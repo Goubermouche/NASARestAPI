@@ -52,6 +52,7 @@ The products target audience mainly consists of enthusiasts interested in images
 N/A
   ### 2.4 Product Scope
 The application will be able to perform basic search operations on the images.nasa API, and then display the resulting images. Furthermore the application will also save the last search result. Below you can see a simple diagram of what the final application might look like: 
+
 <p align="center">
   <img src="https://github.com/Goubermouche/NASARestAPI/blob/master/Documents/Group%201.png" />
 </p>
@@ -65,6 +66,11 @@ The application will contain a basic search bar containing a simple 'X' button t
  
   ### 3.2 Main Modules
 The application contains three main modules: an image viewer module, that visualizes and manages the image context, the search module, and the serialization module. 
+
+<p align="center">
+  <img src="https://github.com/Goubermouche/NASARestAPI/blob/master/Documents/diagram.png" />
+</p>
+
   ### 3.3 Details
 The application will only run on android (Oreo+).
   ### 3.4 Possible Program Flows
