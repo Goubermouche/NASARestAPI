@@ -28,8 +28,9 @@ namespace NasaRestAPI
 
         private async void Entry_Completed(object sender, EventArgs e)
         {
+            const float fakeProgress = 0.3f; ;
             SearchProgressBar.IsVisible = true;
-            SearchProgressBar.Progress = 0;
+            SearchProgressBar.Progress = fakeProgress;
 
             await Task.Run(async () =>
             {
@@ -46,7 +47,7 @@ namespace NasaRestAPI
                     var webRequest = WebRequest.Create(uri);
                     HttpWebResponse response = (HttpWebResponse)await webRequest.GetResponseAsync();
 
-                    int max = (int)response.ContentLength;
+                    int max = (int)((float)response.ContentLength * (1.0f - fakeProgress));
                     var list = new List<byte>();
                     var bytes = new byte[1024];
                     var stream = response.GetResponseStream();
@@ -69,7 +70,7 @@ namespace NasaRestAPI
 
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await SearchProgressBar.ProgressTo((float)curr / (float)max, 1, Easing.Linear);
+                            await SearchProgressBar.ProgressTo((float)curr / ((float)max), 1, Easing.Linear);
                         });
                     } while (bytesRead > 0);
 
