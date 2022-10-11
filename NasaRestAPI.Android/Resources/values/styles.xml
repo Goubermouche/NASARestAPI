@@ -2,7 +2,7 @@
 <resources>
 	<style name="MainTheme">
 		<item name="android:statusBarColor">#2d2d2d</item>
-		<item name="android:navigationBarColor">#2d2d2d</item>
+		<item name="android:navigationBarColor">#000000</item>
 
 		<item name="windowNoTitle">true</item>
 		<!--We will be using the toolbar so no need to show ActionBar-->
@@ -18,7 +18,7 @@
 
 		<item name="colorAccent">#FFFFFF</item>
 		<item name="colorControlNormal">#FF0000</item>
-		<item name="android:colorControlHighlight">#a973ff</item>
+		<item name="android:colorControlHighlight">#00000000</item>
 		<item name="colorControlActivated">#a973ff</item>
 		
 		<item name="android:colorPressedHighlight">@color/ListViewSelected</item>

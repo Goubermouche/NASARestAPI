@@ -10,18 +10,20 @@
 
     <ContentPage.Content>
         <StackLayout 
-            BackgroundColor="{StaticResource BackgroundColorPrimary}"
-            Padding="5, 0, 5, 0">
+            BackgroundColor="{StaticResource BackgroundColorPrimary}">
 
-            <Grid>
+            <Grid
+                BackgroundColor="#2d2d2d">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="4"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0"/>
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="0"/>
                 </Grid.ColumnDefinitions>
 
                 <renderers:Entry
@@ -36,7 +38,7 @@
                     BorderWidth="5" 
                     HeightRequest="40"
                     Padding="120, 20, 110, 20"
-                    Grid.Column="0"
+                    Grid.Column="1"
                     Grid.ColumnSpan="3"
                     Grid.Row="0"
                     Placeholder="Search"
@@ -44,7 +46,7 @@
                     ReturnType="Search"/>
 
                 <Image Source="search.png"
-                    Grid.Column="0"
+                    Grid.Column="1"
                     Grid.Row="0"
                     Margin="10"/>
 
@@ -52,7 +54,7 @@
                     Source="close.png"
                     IsVisible="false"
                     x:Name="SearchCloseButton"
-                    Grid.Column="2"
+                    Grid.Column="3"
                     Grid.Row="0"
                     Margin="10"
                     BackgroundColor="Transparent"
@@ -60,54 +62,82 @@
 
                 <renderers:ProgressBar
                     Grid.Column="0"
-                    Grid.ColumnSpan="3"
+                    Grid.ColumnSpan="5"
                     Grid.Row="1"
                     HeightRequest="4"
                     x:Name="SearchProgressBar"
                     IsVisible="false"/>
             </Grid>
 
-            <ListView 
-                HasUnevenRows="true"
-                VerticalScrollBarVisibility="Never"
-                x:Name="PostListView">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    x:Name="StatusLabel"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Welcome back!"
+                    Grid.Row="1"
+                    TextColor="White"
+                    IsVisible="true"
+                    Grid.Column="0"/>
+
+                <ListView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.RowSpan="3"
                     
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="300"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                    Margin="6, 0, 6, 0"
+                    HasUnevenRows="true"
+                    VerticalScrollBarVisibility="Never"
+                    x:Name="PostListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <Label
-                                    TextColor="White"
-                                    Padding="6, 3, 3, 3"
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    Text="{Binding Data[0].Title}"/>
+                                    <Label
+                                        TextColor="White"
+                                        Padding="3, 3, 3, 3"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Text="{Binding Data[0].Title}"/>
 
-                                <Frame
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    Padding="0"
-                                    Margin="0"
-                                    CornerRadius="6">
-                                    <Image
-                                        Aspect="AspectFill"
-                                        Source="{Binding Links[0].Href}"/>
-                                </Frame>
-                            
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                    <Frame
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Padding="0"
+                                        Margin="0"
+                                        CornerRadius="6">
+                                        <Image
+                                            Aspect="AspectFill"
+                                            Source="{Binding Links[0].Href}"/>
+                                    </Frame>
 
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+           
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

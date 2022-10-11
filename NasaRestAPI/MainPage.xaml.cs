@@ -55,7 +55,9 @@ namespace NasaRestAPI
 
                     if (response.StatusCode != HttpStatusCode.OK)
                     {
-                        // TODO: handle HTML status errors
+                        StatusLabel.IsVisible = true;
+                        StatusLabel.Text = $"ERROR: {response.StatusCode.ToString()}";
+                        SearchProgressBar.IsVisible = false;
                         return;
                     }
 
@@ -102,17 +104,19 @@ namespace NasaRestAPI
             {
                 PostData data = JsonConvert.DeserializeObject<PostData>(json);
   
-                var arr = new ObservableCollection<Item>{ data.Collection.Items[60], data.Collection.Items[61], data.Collection.Items[62] };
-
-                foreach (var item in arr)
-                {
-                    Debug.WriteLine(item.Links[0].Href);
-                }
-
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    PostListView.ItemsSource = data.Collection.Items;
-                    PostListView.ScrollTo(PostListView, ScrollToPosition.Start, false); // TODO
+                    if(data.Collection.Items.Count > 0)
+                    {
+                        StatusLabel.IsVisible = false;
+                        PostListView.ItemsSource = data.Collection.Items;
+                    }
+                    else
+                    {
+                        StatusLabel.IsVisible = true;
+                        StatusLabel.Text = "No items matching your search were found.";
+                        PostListView.ItemsSource = null;
+                    }
                 });
             }
             catch (Exception ex)

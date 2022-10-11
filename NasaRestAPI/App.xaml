@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NasaRestAPI.App">
     <Application.Resources>
-        <Color x:Key="BackgroundColorPrimary">#2d2d2d</Color>
+        <Color x:Key="BackgroundColorPrimary">#000000</Color>
         <Color x:Key="BackgroundColorSecondary">#000000</Color>
         <Color x:Key="TextColorPrimary">#FFFFFF</Color>
     </Application.Resources>
