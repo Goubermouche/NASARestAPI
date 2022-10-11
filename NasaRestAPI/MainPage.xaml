@@ -68,23 +68,25 @@
                     IsVisible="true"/>
             </Grid>
 
-            <RefreshView 
-                RefreshColor="#a973ff" 
-                BackgroundColor="White" 
-                IsRefreshing="{Binding IsRefreshing, Mode=OneWay}"
-                Command="{Binding RefreshCommand}">
-                
-                <ListView ItemsSource="{Binding ItemList}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell 
-                                Text="{Binding Name}"
-                                Detail="{Binding ID}"/>
-                            
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </RefreshView>
+            <ListView 
+                HasUnevenRows="true"
+                x:Name="PostListView">
+                    
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label
+                                    Text="{Binding Data[0].Title}"/>
+
+                                <Image
+                                    Aspect="AspectFill"
+                                    Source="{Binding Links[0].Href}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
         </StackLayout>
     </ContentPage.Content>

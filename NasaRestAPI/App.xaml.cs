@@ -5,10 +5,6 @@ using Newtonsoft.Json;
 
 namespace NasaRestAPI
 {
-    // properties
-    // lastKnownState.......the latest request from the API
-    // lastKnownStateDate...date when the latest request was received
-
     public partial class App : Application
     {
 

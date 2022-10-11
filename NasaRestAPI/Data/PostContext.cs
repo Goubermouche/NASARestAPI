@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -8,19 +9,19 @@ namespace NasaRestAPI.Data
     public class ItemLink
     {
         [JsonProperty("href")]
-        public string Href;
+        public string Href { get; set; }
     }
 
     public class ItemData
     {
         [JsonProperty("title")]
-        public string Title;
+        public string Title { get; set; }
 
         [JsonProperty("date_created")]
-        public DateTime DateCreated;
+        public DateTime DateCreated { get; set; }
 
         [JsonProperty("description")]
-        public string Description;
+        public string Description { get; set; }
     }
 
     public class Item
@@ -29,7 +30,7 @@ namespace NasaRestAPI.Data
         /// Link leading to dotailed images of the item.
         /// </summary>
         [JsonProperty("href")]
-        public string Href;
+        public string Href { get; set; }
 
         [JsonProperty("links")]
         public List<ItemLink> Links { get; set; }
@@ -47,16 +48,16 @@ namespace NasaRestAPI.Data
     public class CollectionLink
     {
         [JsonProperty("href")]
-        public string Href;
+        public string Href { get; set; }
 
         [JsonProperty("prompt")]
-        public string Prompt; // Prev / Next
+        public string Prompt { get; set; } // Prev / Next
     }
 
     public class Collection
     {
         [JsonProperty("items")]
-        public List<Item> Items { get; set; }
+        public ObservableCollection<Item> Items { get; set; }
 
         [JsonProperty("metadata")]
         public PostContextMetadata Metadata { get; set; }

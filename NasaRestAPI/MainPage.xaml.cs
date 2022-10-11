@@ -14,6 +14,7 @@ using System.IO;
 using Xamarin.Essentials;
 using NasaRestAPI.Data;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace NasaRestAPI
 {
@@ -22,6 +23,7 @@ namespace NasaRestAPI
         public MainPage(string json)
         {
             InitializeComponent();
+            this.BindingContext = this;
         }
 
         private async void Entry_Completed(object sender, EventArgs e)
@@ -42,7 +44,7 @@ namespace NasaRestAPI
                     Debug.WriteLine(uri);
 
                     var webRequest = WebRequest.Create(uri);
-                    var response = await webRequest.GetResponseAsync();
+                    HttpWebResponse response = (HttpWebResponse)await webRequest.GetResponseAsync();
 
                     int max = (int)response.ContentLength;
                     var list = new List<byte>();
@@ -50,6 +52,12 @@ namespace NasaRestAPI
                     var stream = response.GetResponseStream();
                     int bytesRead = 0;
                     int curr = 0;
+
+                    if (response.StatusCode != HttpStatusCode.OK)
+                    {
+                        // TODO: handle HTML status errors
+                        return;
+                    }
 
                     do
                     {
@@ -64,10 +72,7 @@ namespace NasaRestAPI
                     } while (bytesRead > 0);
 
                     ASCIIEncoding encoding = new ASCIIEncoding();
-                    string result = encoding.GetString(list.ToArray());
-                    Console.WriteLine(result.Substring(result.Length - 1000));
-
-                    LoadJSONResult(result);
+                    LoadJSONResult(encoding.GetString(list.ToArray()));
                     await Task.Delay(200);
                 }
                 catch(Exception ex)
@@ -96,8 +101,20 @@ namespace NasaRestAPI
             try
             {
                 PostData data = JsonConvert.DeserializeObject<PostData>(json);
+  
+                var arr = new ObservableCollection<Item>{ data.Collection.Items[60], data.Collection.Items[61], data.Collection.Items[62] };
+
+                foreach (var item in arr)
+                {
+                    Debug.WriteLine(item.Links[0].Href);
+                }
+
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    PostListView.ItemsSource = arr;
+                });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
