@@ -65,7 +65,7 @@ The application will contain a basic search bar containing a simple 'X' button t
  Once the application launches the user will be presented with a simple UI containing a search bar and a list view containing the latest search results, if any are available. The user can then use the searchbar to access images from the images.nasa image gallery, after inputting a search query the user can then press the 'search' button on their keyboard to confirm the search and send a request. Once a search request is sent and received the data will begin downloading, the download progress will be displayed inside a simple progress bar located underneath the search bar. After the data is successfully retrieved it will be displayed inside the list view. 
  
   ### 3.2 Main Modules
-The application contains three main modules: an image viewer module, that visualizes and manages the image context, the search module, and the serialization module. 
+The application contains three main modules: an image viewer module, that visualizes and manages the image context, the search module, and the serialization module. Below you can see the possible program flows between the several modules. 
 
 <p align="center">
   <img src="https://github.com/Goubermouche/NASARestAPI/blob/master/Documents/diagram.png" />
