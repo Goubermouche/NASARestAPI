@@ -51,7 +51,10 @@ The products target audience mainly consists of enthusiasts interested in images
   ### 2.3 Details, Motivation and Live Examples
 N/A
   ### 2.4 Product Scope
-The application will be able to perform basic search operations on the images.nasa API, and then display the resulting images. Furthermore the application will also save the last search result.  
+The application will be able to perform basic search operations on the images.nasa API, and then display the resulting images. Furthermore the application will also save the last search result. Below you can see a simple diagram of what the final application might look like: 
+<p align="center">
+  <img src="https://github.com/Goubermouche/NASARestAPI/blob/master/Documents/Group%201.png" />
+</p>
 
   ### 2.5 Unimportant Functions and Properties
 The application will contain a basic search bar containing a simple 'X' button that will clear the underlying entry once clicked, the 'X' button will only be visible if the underlying entry contains atleast one character. 
