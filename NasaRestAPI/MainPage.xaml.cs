@@ -111,7 +111,8 @@ namespace NasaRestAPI
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    PostListView.ItemsSource = arr;
+                    PostListView.ItemsSource = data.Collection.Items;
+                    PostListView.ScrollTo(PostListView, ScrollToPosition.Start, false); // TODO
                 });
             }
             catch (Exception ex)

@@ -18,7 +18,7 @@ using System.Diagnostics;
 using Android.Text;
 using Android.Content.Res;
 
-[assembly: ExportRenderer(typeof(NasaRestAPI.Renderers.ProgressBar), typeof(ProgressBarRenderer))]
+[assembly: ExportRenderer(typeof(Xamarin.Forms.ProgressBar), typeof(ProgressBarRendererAndroid))]
 namespace NasaRestAPI.Droid.Renderers
 {
     public class ProgressBarRendererAndroid : ProgressBarRenderer
@@ -33,9 +33,11 @@ namespace NasaRestAPI.Droid.Renderers
         {
             base.OnElementChanged(e);
 
-            if (e.OldElement == null)
+            if (Control != null)
             {
-                customProgress = (NasaRestAPI.Renderers.ProgressBar)e.NewElement;
+                Android.Widget.ProgressBar progressBar = Control as Android.Widget.ProgressBar;
+                Drawable customDrawable = Context.GetDrawable(Resource.Drawable.custom_progressbar);
+                progressBar.ProgressDrawable = customDrawable;
             }
         }
     }
