@@ -31,8 +31,8 @@
                     TextColor="{StaticResource TextColorPrimary}"
                     BorderColor="{StaticResource BackgroundColorSecondary}" 
                     x:Name="SearchEntry"
-                    Completed="Entry_Completed"
-                    TextChanged="Entry_TextChanged"
+                    Completed="OnSearchEntryCompleted"
+                    TextChanged="OnSearchEntryTextChanged"
                     FontSize="16"
                     CornerRadius="20" 
                     BorderWidth="5" 
@@ -58,7 +58,7 @@
                     Grid.Row="0"
                     Margin="10"
                     BackgroundColor="Transparent"
-                    Clicked="SearchCloseButton_Clicked"/>
+                    Clicked="OnSearchEntryCloseButtonClicked"/>
 
                 <renderers:ProgressBar
                     Grid.Column="0"
@@ -83,7 +83,6 @@
                     x:Name="StatusLabel"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"
-                    Text="Welcome back!"
                     Grid.Row="1"
                     TextColor="White"
                     IsVisible="true"

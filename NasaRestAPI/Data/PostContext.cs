@@ -74,4 +74,13 @@ namespace NasaRestAPI.Data
         [JsonProperty("collection")]
         public Collection Collection { get; set; }
     }
+
+    public class DataContext
+    {
+        [JsonProperty("keyWord")]
+        public string KeyWord { get; set; }
+
+        [JsonProperty("data")]
+        public PostData Data { get; set; }
+    }
 }

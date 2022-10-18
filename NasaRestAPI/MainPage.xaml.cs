@@ -20,13 +20,25 @@ namespace NasaRestAPI
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage(string json)
+        public MainPage()
         {
             InitializeComponent();
             this.BindingContext = this;
+
+            var data = ((App)Application.Current).Context.Data;
+
+            if (data != null && data.Collection.Items.Count > 0)
+            {
+                SetViewContextValid();
+                SearchEntry.Text = ((App)Application.Current).Context.KeyWord;
+            }
+            else
+            {
+                SetViewContextInvalid("Welcome back!");
+            }
         }
 
-        private async void Entry_Completed(object sender, EventArgs e)
+        private async void OnSearchEntryCompleted(object sender, EventArgs e)
         {
             const float fakeProgress = 0.3f; ;
             SearchProgressBar.IsVisible = true;
@@ -36,7 +48,7 @@ namespace NasaRestAPI
             {
                 try
                 {
-                    if(String.IsNullOrWhiteSpace(SearchEntry.Text))
+                    if(string.IsNullOrWhiteSpace(SearchEntry.Text))
                     {
                         return;
                     }
@@ -74,6 +86,9 @@ namespace NasaRestAPI
                         });
                     } while (bytesRead > 0);
 
+                    ((App)Application.Current).Context.KeyWord = SearchEntry.Text;
+
+
                     ASCIIEncoding encoding = new ASCIIEncoding();
                     LoadJSONResult(encoding.GetString(list.ToArray()));
                     await Task.Delay(200);
@@ -87,13 +102,13 @@ namespace NasaRestAPI
             SearchProgressBar.IsVisible = false;
         }
 
-        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        private void OnSearchEntryTextChanged(object sender, TextChangedEventArgs e)
         {
             string value = e.NewTextValue;
             SearchCloseButton.IsVisible = value.Length > 0;
         }
 
-        private void SearchCloseButton_Clicked(object sender, EventArgs e)
+        private void OnSearchEntryCloseButtonClicked(object sender, EventArgs e)
         {
             SearchEntry.Text = "";
             SearchEntry.Unfocus();
@@ -103,20 +118,17 @@ namespace NasaRestAPI
         {
             try
             {
-                PostData data = JsonConvert.DeserializeObject<PostData>(json);
+                ((App)Application.Current).Context.Data = JsonConvert.DeserializeObject<PostData>(json);
   
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    if(data.Collection.Items.Count > 0)
+                    if(((App)Application.Current).Context.Data.Collection.Items.Count > 0)
                     {
-                        StatusLabel.IsVisible = false;
-                        PostListView.ItemsSource = data.Collection.Items;
+                        SetViewContextValid();
                     }
                     else
                     {
-                        StatusLabel.IsVisible = true;
-                        StatusLabel.Text = "No items matching your search were found.";
-                        PostListView.ItemsSource = null;
+                        SetViewContextInvalid("No items matching your search were found.");
                     }
                 });
             }
@@ -124,6 +136,19 @@ namespace NasaRestAPI
             {
                 Console.WriteLine(ex);
             }
+        }
+
+        private void SetViewContextValid()
+        {
+            StatusLabel.IsVisible = false;
+            PostListView.ItemsSource = ((App)Application.Current).Context.Data.Collection.Items;
+        }
+
+        private void SetViewContextInvalid(string message)
+        {
+            StatusLabel.IsVisible = true;
+            StatusLabel.Text = message;
+            PostListView.ItemsSource = null;
         }
     }
 }
